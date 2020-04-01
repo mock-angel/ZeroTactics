@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
     
     public Rigidbody2D rb;
     
-    Vector2 movement;
-    Vector2 axis;
-    // Update is called once per frame
+    Vector3 movement;
+    Vector3 axis;
+    
     void Update()
     {
         movement.x = axis.x = Input.GetAxisRaw("Horizontal");
@@ -24,13 +24,14 @@ public class PlayerMovement : MonoBehaviour
         
         //Fixed update script
         
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+//        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
 //        Vector2 addForce = new Vector2(movement.x * moveSpeed * Time.deltaTime, movement.y * moveSpeed * Time.deltaTime);
 //        rb.AddForce(addForce);
     }
     
     void FixedUpdate()
-    {
+    {   
+        transform.position = transform.position + (movement * moveSpeed * Time.deltaTime);
 //        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
